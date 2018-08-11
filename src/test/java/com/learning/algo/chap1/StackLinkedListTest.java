@@ -28,10 +28,11 @@ public class StackLinkedListTest {
 	}
 	
 	@Test
-	public void whenPeekOnEmptyStackCalled_ReturnsNull() {
+	public void whenPeekOnEmptyStackCalled_ThrowsException() {
 		StackLinkedList<String> stringStack = new StackLinkedList<>();
-		String top = stringStack.peek();
-		assertThat(top, equalTo(null));
+		thrown.expect(UnsupportedOperationException.class);
+		thrown.expectMessage(startsWith("Stack empty"));
+		stringStack.peek();
 	}
 
 	@Test

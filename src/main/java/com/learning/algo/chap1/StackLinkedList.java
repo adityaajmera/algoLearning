@@ -35,7 +35,7 @@ public class StackLinkedList<T> implements IStack<T> {
 		if(root!=null) {
 			return root.item;			
 		}
-		return null;
+		throw new UnsupportedOperationException("Stack empty");
 	}
 
 	private class Node<I> {
