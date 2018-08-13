@@ -23,11 +23,13 @@ public class StackArray<T> implements IStack<T> {
 	@Override
 	public T pop() {
 		int size = arr.length;
-		if(top>1 && top<=(size/4)) {
+		if(top>1 && top==(size/4)) {
 			resize(size/2);
 		}
 		if(top>-1) {
-			return arr[top--];
+			T item = arr[top--];
+			arr[top+1]=null;
+			return item;
 		}
 		throw new UnsupportedOperationException("Stack empty");
 	}

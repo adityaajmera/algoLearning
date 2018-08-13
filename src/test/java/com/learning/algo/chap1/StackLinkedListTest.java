@@ -11,25 +11,22 @@ import org.junit.rules.ExpectedException;
 public class StackLinkedListTest {
 	@Rule
 	public ExpectedException thrown= ExpectedException.none();
+	
+	private StackLinkedList<String> stringStack = new StackLinkedList<>();
 
 	@Test
 	public void whenNoElementAddedToStack_IsEmptyCall_ReturnsTrue() {
-		StackLinkedList<String> stringStack = new StackLinkedList<>();
-		boolean emptyFlag = stringStack.isEmpty();
-		assertThat(emptyFlag, equalTo(true));
+		assertThat(stringStack.isEmpty(), equalTo(true));
 	}
 	
 	@Test
 	public void whenElementAddedToStack_IsEmptyCall_ReturnsFalse() {
-		StackLinkedList<String> stringStack = new StackLinkedList<>();
 		stringStack.push("KING");
-		boolean emptyFlag = stringStack.isEmpty();
-		assertThat(emptyFlag, equalTo(false));
+		assertThat(stringStack.isEmpty(), equalTo(false));
 	}
 	
 	@Test
 	public void whenPeekOnEmptyStackCalled_ThrowsException() {
-		StackLinkedList<String> stringStack = new StackLinkedList<>();
 		thrown.expect(UnsupportedOperationException.class);
 		thrown.expectMessage(startsWith("Stack empty"));
 		stringStack.peek();
@@ -37,46 +34,34 @@ public class StackLinkedListTest {
 
 	@Test
 	public void whenPeekOnNonEmptyStack_ReturnsLastAddedElement() {
-		StackLinkedList<String> stringStack = new StackLinkedList<>();
 		stringStack.push("KING");
-		String top = stringStack.peek();
-		assertThat(top, equalTo("KING"));
+		assertThat(stringStack.peek(), equalTo("KING"));
 		stringStack.push("Queen");
-		top = stringStack.peek();
-		assertThat(top, equalTo("Queen"));
+		assertThat(stringStack.peek(), equalTo("Queen"));
 	}
 	
 	@Test
 	public void whenElementAddedToStack_ItAddsInStackOnTop() {
-		StackLinkedList<String> stringStack = new StackLinkedList<>();
 		stringStack.push("I");
-		boolean emptyCheck = stringStack.isEmpty();
-		assertThat(emptyCheck, equalTo(false));
-		String top = stringStack.peek();
-		assertThat(top, equalTo("I"));
+		assertThat(stringStack.isEmpty(), equalTo(false));
+		assertThat(stringStack.peek(), equalTo("I"));
 		stringStack.push("am");
 		stringStack.push("Legend");
-		top = stringStack.peek();
-		assertThat(top, equalTo("Legend"));
+		assertThat(stringStack.peek(), equalTo("Legend"));
 	}
 	
 	@Test
 	public void whenElementPoped_ElementGetsRemovedFromStack() {
-		StackLinkedList<String> stringStack = new StackLinkedList<>();
 		stringStack.push("I");
 		stringStack.push("AM");
 		stringStack.push("LEGEND");
-		String top = stringStack.peek();
-		assertThat(top, equalTo("LEGEND"));
-		String popedElement = stringStack.pop();
-		assertThat(popedElement, equalTo("LEGEND"));
-		top = stringStack.peek();
-		assertThat(top, equalTo("AM"));
+		assertThat(stringStack.peek(), equalTo("LEGEND"));
+		assertThat(stringStack.pop(), equalTo("LEGEND"));
+		assertThat(stringStack.peek(), equalTo("AM"));
 	}
 	
 	@Test
 	public void whenNoElementAddedToStackLinkedList_OperationPopCalled_ThrowsUnsupportedOperationException() {
-		StackLinkedList<String> stringStack = new StackLinkedList<>();
 		thrown.expect(UnsupportedOperationException.class);
 		thrown.expectMessage(startsWith("Can not call pop"));
 		stringStack.pop();

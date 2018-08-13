@@ -17,15 +17,13 @@ public class StackArrayTest {
 	
 	@Test
 	public void whenIsEmptyCalled_OnEmptyStack_ReturnsTrue() {
-		boolean status = stringStack.isEmpty();
-		assertThat(status, equalTo(true));
+		assertThat(stringStack.isEmpty(), equalTo(true));
 	}
 
 	@Test
 	public void whenIsEmptyCalled_OnUbnmptyStack_ReturnsFalse() {
 		stringStack.push("I");
-		boolean status = stringStack.isEmpty();
-		assertThat(status, equalTo(false));
+		assertThat(stringStack.isEmpty(), equalTo(false));
 	}
 	
 	@Test
@@ -38,11 +36,9 @@ public class StackArrayTest {
 	@Test
 	public void whenStackIsNotEmpty_OnCallingPeek_ReturnsLatestElementAdded() {
 		stringStack.push("I");
-		String element = stringStack.peek();
-		assertThat(element, equalTo("I"));
+		assertThat(stringStack.peek(), equalTo("I"));
 		stringStack.push("AM");
-		element = stringStack.peek();
-		assertThat(element, equalTo("AM"));
+		assertThat(stringStack.peek(), equalTo("AM"));
 	}
 	
 	@Test
@@ -57,15 +53,10 @@ public class StackArrayTest {
 		stringStack.push("I");
 		stringStack.push("AM");
 		stringStack.push("LEGEND");
-		String topElement = stringStack.peek();
-		assertThat(topElement, equalTo("LEGEND"));
-		String popElement = stringStack.pop();
-		assertThat(popElement, equalTo("LEGEND"));
-		topElement = stringStack.peek();
-		assertThat(topElement, equalTo("AM"));
-		popElement = stringStack.pop();
-		assertThat(popElement, equalTo("AM"));
-		topElement = stringStack.peek();
-		assertThat(topElement, equalTo("I"));
+		assertThat(stringStack.peek(), equalTo("LEGEND"));
+		assertThat(stringStack.pop(), equalTo("LEGEND"));
+		assertThat(stringStack.peek(), equalTo("AM"));
+		assertThat(stringStack.pop(), equalTo("AM"));
+		assertThat(stringStack.peek(), equalTo("I"));
 	}
 }
